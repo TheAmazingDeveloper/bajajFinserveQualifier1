@@ -1,4 +1,10 @@
 const validateFibonacci = (value) => {
+  if (typeof value !== 'number') {
+    return {
+      isValid: false,
+      message: 'Fibonacci value must be a number',
+    };
+  }
 
   if (!Number.isInteger(value)) {
     return {
@@ -13,6 +19,14 @@ const validateFibonacci = (value) => {
       message: 'Fibonacci value must be non-negative',
     };
   }
+
+  if (value > 10000) {
+    return {
+      isValid: false,
+      message: 'Fibonacci value too large (max 10000)',
+    };
+  }
+
   return { isValid: true };
 };
 
@@ -29,6 +43,23 @@ const validateNumberArray = (value, operation) => {
       isValid: false,
       message: `${operation} array cannot be empty`,
     };
+  }
+
+  if (value.length > 1000) {
+    return {
+      isValid: false,
+      message: `${operation} array too large (max 1000 elements)`,
+    };
+  }
+
+  for (let i = 0; i < value.length; i++) {
+    const item = value[i];
+    if (typeof item !== 'number' || !Number.isInteger(item)) {
+      return {
+        isValid: false,
+        message: `${operation} array must contain only integers`,
+      };
+    }
   }
 
   return { isValid: true };
@@ -51,6 +82,13 @@ const validateAIQuestion = (value) => {
     };
   }
 
+  if (trimmed.length > 500) {
+    return {
+      isValid: false,
+      message: 'AI question too long (max 500 characters)',
+    };
+  }
+
   return { isValid: true };
 };
 
@@ -64,12 +102,13 @@ const validateBFHLRequest = (body) => {
 
   const validKeys = ['fibonacci', 'prime', 'lcm', 'hcf', 'AI'];
   const providedKeys = Object.keys(body);
+
   const operationKeys = providedKeys.filter((key) => validKeys.includes(key));
 
   if (operationKeys.length === 0) {
     return {
       isValid: false,
-      message: `Request must be only one of: ${validKeys.join(', ')}`,
+      message: `Request must contain exactly one of: ${validKeys.join(', ')}`,
     };
   }
 
