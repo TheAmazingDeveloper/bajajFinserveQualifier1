@@ -1,19 +1,14 @@
 {
-  "name": "chitkara-qualifier-api",
+  "name": "bajaj-qualifier-api",
   "version": "1.0.0",
-  "description": "REST API for Chitkara Qualifier with computational operations and AI integration",
+  "description": "REST API",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "jest"
   },
-  "keywords": [
-    "rest-api",
-    "express",
-    "chitkara",
-    "qualifier"
-  ],
+  "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
