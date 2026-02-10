@@ -27,8 +27,6 @@ A REST API service built with Node.js and Express for the Chitkara University qu
 ```
 chitkara-api/
 ├── src/
-│   ├── config/           # Configuration
-│   │   └── index.js      # Environment config
 │   ├── controllers/      # Route controllers
 │   │   ├── bfhlController.js
 │   │   └── healthController.js
@@ -38,6 +36,7 @@ chitkara-api/
 │   │   ├── bfhlRoutes.js
 │   │   └── healthRoutes.js
 │   ├── utils/            # Utility functions
+│   │   ├── constants.js      # App constants
 │   │   ├── mathUtils.js      # Math operations
 │   │   ├── aiService.js      # Gemini integration
 │   │   ├── validators.js     # Input validation
@@ -68,8 +67,6 @@ Edit `.env` with your values:
 
 ```env
 PORT=3000
-NODE_ENV=development
-OFFICIAL_EMAIL=your.email@chitkara.edu.in
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
@@ -99,7 +96,7 @@ GET /health
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in"
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in"
 }
 ```
 
@@ -123,7 +120,7 @@ Content-Type: application/json
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "data": [0, 1, 1, 2, 3, 5, 8]
 }
 ```
@@ -141,7 +138,7 @@ Content-Type: application/json
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "data": [2, 7, 11]
 }
 ```
@@ -159,7 +156,7 @@ Content-Type: application/json
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "data": 72
 }
 ```
@@ -177,7 +174,7 @@ Content-Type: application/json
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "data": 12
 }
 ```
@@ -195,7 +192,7 @@ Content-Type: application/json
 ```json
 {
   "is_success": true,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "data": "mumbai"
 }
 ```
@@ -207,7 +204,7 @@ All errors follow this format:
 ```json
 {
   "is_success": false,
-  "official_email": "your.email@chitkara.edu.in",
+  "official_email": "darshit1171.be23@chitkarauniversity.edu.in",
   "message": "Error description"
 }
 ```
@@ -243,9 +240,7 @@ npm test
 Make sure to set these in your production environment:
 
 ```env
-NODE_ENV=production
 PORT=3000
-OFFICIAL_EMAIL=your.email@chitkara.edu.in
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
